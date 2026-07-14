@@ -1,0 +1,14 @@
+﻿{
+  "name": "markenza-ai",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Markenza AI — Hermes 3 + Supabase backend for the Markenza agency agent.",
+  "scripts": {
+    "db:reset": "supabase db reset",
+    "db:push": "supabase db push",
+    "fn:serve": "supabase functions serve --env-file .env",
+    "tick": "powershell -File scripts/tick.ps1",
+    "smoke": "powershell -File scripts/smoke.ps1",
+    "deploy": "powershell -File scripts/deploy.ps1"
+  }
+}

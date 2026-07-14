@@ -1,0 +1,84 @@
+﻿# Markenza AI — Supabase project config (committed for local dev)
+project_id = "markenza-ai"
+
+[api]
+enabled = true
+port = 54321
+schemas = ["public", "storage", "graphql_public"]
+extra_search_path = ["public", "extensions"]
+max_rows = 1000
+
+[db]
+port = 54322
+shadow_port = 54320
+major_version = 15
+
+[studio]
+enabled = true
+port = 54323
+api_url = "http://127.0.0.1"
+
+[inbucket]
+enabled = true
+port = 54324
+
+[storage]
+enabled = true
+file_size_limit = "50MiB"
+
+[auth]
+enabled = true
+site_url = "http://localhost:3000"
+additional_redirect_urls = ["https://localhost:3000"]
+jwt_expiry = 3600
+enable_signup = false           # single user, disable public signup
+enable_anonymous_sign_ins = false
+enable_manual_linking = false
+
+[auth.email]
+enable_signup = false
+double_confirm_changes = true
+enable_confirmations = false   # we use admin API to create the user
+
+[edge_runtime]
+enabled = true
+# declare the secrets every function can read (values come from `supabase secrets set`)
+[edge_runtime.secrets]
+SUPABASE_URL = "env(SUPABASE_URL)"
+SUPABASE_ANON_KEY = "env(SUPABASE_ANON_KEY)"
+SUPABASE_SERVICE_ROLE_KEY = "env(SUPABASE_SERVICE_ROLE_KEY)"
+HERMES_BASE_URL = "env(HERMES_BASE_URL)"
+HERMES_MODEL = "env(HERMES_MODEL)"
+HERMES_API_KEY = "env(HERMES_API_KEY)"
+APIFY_TOKEN = "env(APIFY_TOKEN)"
+APIFY_LINKEDIN_ACTOR = "env(APIFY_LINKEDIN_ACTOR)"
+SMTP_HOST = "env(SMTP_HOST)"
+SMTP_PORT = "env(SMTP_PORT)"
+SMTP_USER = "env(SMTP_USER)"
+SMTP_PASS = "env(SMTP_PASS)"
+SMTP_FROM = "env(SMTP_FROM)"
+CRON_SECRET = "env(CRON_SECRET)"
+
+[functions.outreach-discover]
+verify_jwt = false
+
+[functions.outreach-generate]
+verify_jwt = false
+
+[functions.outreach-send]
+verify_jwt = false
+
+[functions.outreach-followup]
+verify_jwt = false
+
+[functions.content-research]
+verify_jwt = false
+
+[functions.content-generate]
+verify_jwt = false
+
+[functions.orchestrator]
+verify_jwt = false
+
+[functions.auth-bootstrap]
+verify_jwt = false
